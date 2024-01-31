@@ -1,1 +1,1 @@
-# learning-diary-React-
+# learning-diary-react
