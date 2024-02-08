@@ -1,16 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
-import Header from './Header';
-import Nav from './Nav';
-import AddData from './AddData';
-import Trecker from './Trecker'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './Layout';
+import Home from './Home';
+import Tracker from './Tracker';
+
+const DEFAULT_DATE_VALUE = '21.12.2020';
+const DEFAULT_TIME_SPENT_ENGLISH_VALUE = 1;
+const DEFAULT_TIME_SPENT_IT_VALUE = 2;
 
 function App() {
     const [items, setItems] = useState([
         {
             id: 0,
             date: '20.02.2024',
-            data: { 
+            data: {
                 english: {
                     timeSpent: 0,
                 },
@@ -21,12 +25,11 @@ function App() {
         },
     ]);
 
-    const [date, setDate] = useState('21.12.2020');
-    const [timeSpentEnglish, setTimeSpentEnglish] = useState(5);
-    const [timeSpentIT, setTimeSpentIT] = useState(0);
+    const [date, setDate] = useState(DEFAULT_DATE_VALUE);
+    const [timeSpentEnglish, setTimeSpentEnglish] = useState(DEFAULT_TIME_SPENT_ENGLISH_VALUE);
+    const [timeSpentIT, setTimeSpentIT] = useState(DEFAULT_TIME_SPENT_IT_VALUE);
 
-    // TODO: refactor params to object  
-    const addItem = (date, timeSpentIT, timeSpentEnglish) => {
+    const addItem = ({ date, timeSpentIT, timeSpentEnglish }) => {
         const id = items.length;
         const myNewItem = {
             id: id,
@@ -46,31 +49,31 @@ function App() {
 
     const submit = (e) => {
         e.preventDefault();
-        console.log('!!!!date:', date, 'timeSpentEnglish:', timeSpentEnglish, 'timeSpentIT', timeSpentIT);
-        addItem(date, timeSpentIT, timeSpentEnglish);
-        console.log(items);
+        addItem({ date, timeSpentIT, timeSpentEnglish });
     };
 
     return (
-        <div className="App">
-            <Header />
-            <Nav />
-            <AddData
-                timeSpentEnglish={timeSpentEnglish}
-                timeSpentIT={timeSpentIT}
-                date={date}
-                setDate={setDate}
-                setTimeSpentIT={setTimeSpentIT}
-                setTimeSpentEnglish={setTimeSpentEnglish}
-                submit={submit}
-            />
-            <Trecker 
-            timeSpentEnglish={timeSpentEnglish}
-            timeSpentIT={timeSpentIT}
-            date={date}
-            items={items}
-            />
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route
+                        path="/"
+                        element={
+                            <Home
+                                timeSpentEnglish={timeSpentEnglish}
+                                timeSpentIT={timeSpentIT}
+                                date={date}
+                                setDate={setDate}
+                                setTimeSpentIT={setTimeSpentIT}
+                                setTimeSpentEnglish={setTimeSpentEnglish}
+                                submit={submit}
+                            />
+                        }
+                    ></Route>
+                    <Route path="tracker" element={<Tracker items={items} />}></Route>
+                </Route>
+            </Routes>
+        </BrowserRouter>
     );
 }
 

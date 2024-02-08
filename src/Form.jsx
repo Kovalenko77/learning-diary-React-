@@ -1,9 +1,6 @@
 import React from 'react';
-import { useRef } from 'react';
 
-const AddData = ({ date, timeSpentEnglish, timeSpentIT, submit, setDate, setTimeSpentEnglish, setTimeSpentIT }) => {
-    // const inputRef = useRef();
-    console.log('----date:', date,'timeSpentEnglish:', timeSpentEnglish, 'timeSpentIT', timeSpentIT);
+const Form = ({ date, timeSpentEnglish, timeSpentIT, submit, setDate, setTimeSpentEnglish, setTimeSpentIT }) => {
     return (
         <form onSubmit={submit}>
             <div>
@@ -23,8 +20,8 @@ const AddData = ({ date, timeSpentEnglish, timeSpentIT, submit, setDate, setTime
                     value={timeSpentEnglish}
                     onChange={(e) => setTimeSpentEnglish(e.target.value)}
                 ></input>
-                {/* //<label>Comment</label>
-                //<input type="text" placeholder="text some info "></input> */}
+                {/* <label>Comment</label>
+                <input type="text" placeholder="text some info "></input> */}
             </div>
             <div>
                 <label>Time to learn IT</label>
@@ -42,38 +39,4 @@ const AddData = ({ date, timeSpentEnglish, timeSpentIT, submit, setDate, setTime
     );
 };
 
-export default AddData;
-
-// [{
-//   id: 1,
-//   date: "20.02.2024",
-//   data: {
-//       english: {
-//           timeSpent: 0.5,
-//           comment: "write 15 examples"
-//       },
-//       IT: {
-//           timeSpent: 3,
-//           comment: "Typescript"
-//       },
-//       dancing: {
-//           timeSpent: 3,
-//           comment: ""
-//       },
-//   }
-// }]
-
-// [{
-//   id: 1,
-//   date: "20.02.2024",
-//   data: {
-//       english: {
-//           timeSpent: 0.5,
-//       },
-//       IT: {
-//           timeSpent: 3,
-//       }
-//   }
-// }]
-
-// onClick={ () => inputRef.current.focus()}
+export default Form;
