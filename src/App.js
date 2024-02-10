@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './Layout';
 import Home from './Home';
@@ -11,10 +10,14 @@ const DEFAULT_TIME_SPENT_ENGLISH_VALUE = 1;
 const DEFAULT_TIME_SPENT_IT_VALUE = 2;
 
 function App() {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(JSON.parse(localStorage.getItem('items')) || []);
     const [date, setDate] = useState(DEFAULT_DATE_VALUE);
     const [timeSpentEnglish, setTimeSpentEnglish] = useState(DEFAULT_TIME_SPENT_ENGLISH_VALUE);
     const [timeSpentIT, setTimeSpentIT] = useState(DEFAULT_TIME_SPENT_IT_VALUE);
+
+    useEffect(() => {
+        localStorage.setItem('items', JSON.stringify(items));
+    }, [items]);
 
     const addItem = ({ date, timeSpentIT, timeSpentEnglish }) => {
         const id = items.length;
