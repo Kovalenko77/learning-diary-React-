@@ -1,18 +1,22 @@
+import { Item } from './types';
+import {Discipline} from './types/constants'
+
 export function getCurrentDateFormatted() {
-    var todayDate = new Date();
-    var day = todayDate.getDate();
-    var month = todayDate.getMonth() + 1;
-    var year = todayDate.getFullYear();
+    const todayDate = new Date();
+    const day = todayDate.getDate();
+    const month = todayDate.getMonth() + 1;
+    const year = todayDate.getFullYear();
 
-    day = day < 10 ? '0' + day : day;
-    month = month < 10 ? '0' + month : month;
+    const formatedDay = day < 10 ? '0' + day : day.toString();
+    const formatedMonth = month < 10 ? '0' + month : month.toString();
 
-    var formattedDate = day + '.' + month + '.' + year;
+    var formattedDate = formatedDay + '.' + formatedMonth + '.' + year;
 
     return formattedDate;
 }
 
-export function calculateTotalTimeSpent(dataArray, discipline) {
+
+export function calculateTotalTimeSpent(dataArray : Item[] , discipline : Discipline) {
     // Используем метод reduce для свертки массива и вычисления суммы
     return dataArray.reduce((total, currentItem) => {
         // Если у текущего элемента есть свойство 'data' и 'english' внутри него
@@ -24,7 +28,7 @@ export function calculateTotalTimeSpent(dataArray, discipline) {
     }, 0);
 }
 
-export function calculateAverageTimeSpent(dataArray, discipline) {
+export function calculateAverageTimeSpent(dataArray : Item[], discipline : Discipline) {
     const timeSpentValues = dataArray.map((item) => item.data[discipline].timeSpent);
     let averageTimeSpent = 0;
     if (timeSpentValues.length > 0) {
