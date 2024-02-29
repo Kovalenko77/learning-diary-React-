@@ -1,6 +1,7 @@
 import React from 'react';
+interface FormProps{ date : string, timeSpentEnglish : number, timeSpentIT : number, submit : ( e : React.FormEvent<EventTarget>) => void, setDate : (value: string) => void, setTimeSpentEnglish : (value: number) => void, setTimeSpentIT : (value: number) => void }
 
-const Form = ({ date, timeSpentEnglish, timeSpentIT, submit, setDate, setTimeSpentEnglish, setTimeSpentIT }) => {
+const Form = ({ date, timeSpentEnglish, timeSpentIT, submit, setDate, setTimeSpentEnglish, setTimeSpentIT } : FormProps ) => {
     return (
         <form onSubmit={submit}>
             <div>
@@ -9,7 +10,7 @@ const Form = ({ date, timeSpentEnglish, timeSpentIT, submit, setDate, setTimeSpe
                     type="data"
                     placeholder="01.01.2024"
                     value={date}
-                    onChange={(e) => setDate(e.target.value)}
+                    onChange={(event) => setDate(event.target.value)}
                 ></input>
             </div>
             <div>
@@ -18,7 +19,7 @@ const Form = ({ date, timeSpentEnglish, timeSpentIT, submit, setDate, setTimeSpe
                     type="number"
                     placeholder="time in hours"
                     value={timeSpentEnglish}
-                    onChange={(e) => setTimeSpentEnglish(e.target.value)}
+                    onChange={(event) => setTimeSpentEnglish(event.target.valueAsNumber)}
                 ></input>
                 {/* <label>Comment</label>
                 <input type="text" placeholder="text some info "></input> */}
@@ -29,7 +30,7 @@ const Form = ({ date, timeSpentEnglish, timeSpentIT, submit, setDate, setTimeSpe
                     type="number"
                     placeholder="time in hours"
                     value={timeSpentIT}
-                    onChange={(e) => setTimeSpentIT(e.target.value)}
+                    onChange={(event) => setTimeSpentIT(event.target.valueAsNumber)}
                 ></input>
                 {/* <label>Comment</label>
                 <input type="text" placeholder="text some info "></input> */}

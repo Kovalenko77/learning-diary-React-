@@ -1,7 +1,14 @@
 import React from 'react';
 import { calculateTotalTimeSpent, calculateAverageTimeSpent } from './utils';
+import { Item } from './types';
+import {Discipline} from './types/constants'
 
-const TrackerTable = ({ items }) => {
+
+interface TrackerTableProps {
+    items: Item[]
+}
+
+const TrackerTable = ({ items } : TrackerTableProps ) => {
     let tableRowDataArr = items.map(function (item) {
         return (
             <tr key={item.id}>
@@ -14,15 +21,15 @@ const TrackerTable = ({ items }) => {
     const summaryRow = (
         <tr>
             <th>Sum</th>
-            <td>{calculateTotalTimeSpent(items, 'english')}</td>
-            <td>{calculateTotalTimeSpent(items, 'IT')}</td>
+            <td>{calculateTotalTimeSpent(items, Discipline.english)}</td>
+            <td>{calculateTotalTimeSpent(items, Discipline.IT)}</td>
         </tr>
     );
     const averageRow = (
         <tr>
             <th>Average</th>
-            <td>{calculateAverageTimeSpent(items, 'english')}</td>
-            <td>{calculateAverageTimeSpent(items, 'IT')}</td>
+            <td>{calculateAverageTimeSpent(items, Discipline.english)}</td>
+            <td>{calculateAverageTimeSpent(items, Discipline.IT)}</td>
         </tr>
     );
     return (
