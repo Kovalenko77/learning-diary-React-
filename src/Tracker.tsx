@@ -1,18 +1,20 @@
-import React from 'react';
-import TrackerTable from './TrackerTable';
-import { Item } from './types';
+import React from "react";
+import TrackerTable from "./TrackerTable";
+import { Item } from "./types";
+import UploadFile from "./UploadFile";
 
 interface TrackerProps {
-    items: Item[]
+  items: Item[];
+  setItems: (value: string) => void;
 }
 
-const Tracker =  (props: TrackerProps) => {
-    return (
-        <div>
-            <TrackerTable items={props.items} />
-        </div>
-    );
+const Tracker = (props: TrackerProps) => {
+  return (
+    <div>
+      <TrackerTable items={props.items} />
+      <UploadFile setItems={props.setItems} />
+    </div>
+  );
 };
 
 export default Tracker;
-
