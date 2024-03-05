@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent } from 'react';
 
 interface UploadFileProps {
   setItems: (value: string) => void;
@@ -23,10 +23,7 @@ const UploadFile = ({ setItems }: UploadFileProps) => {
     };
 
     fileReader.onerror = (event) => {
-      console.error(
-        "Ошибка при чтении файла:",
-        (event.target as FileReader).error,
-      );
+      console.error('Ошибка при чтении файла:', (event.target as FileReader).error);
     };
 
     fileReader.readAsText(file);

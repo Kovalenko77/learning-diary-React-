@@ -1,5 +1,5 @@
-import React from "react";
-import { Item } from "./types";
+import React from 'react';
+import { Item } from './types';
 
 interface DownloadFileProps {
   items: Item[];
@@ -7,7 +7,7 @@ interface DownloadFileProps {
 
 const DownloadFile = ({ items }: DownloadFileProps) => {
   function download(content: string, fileName: string, contentType: string) {
-    const a = document.createElement("a");
+    const a = document.createElement('a');
     const file = new Blob([content], { type: contentType });
     a.href = URL.createObjectURL(file);
     a.download = fileName;
@@ -15,7 +15,7 @@ const DownloadFile = ({ items }: DownloadFileProps) => {
   }
 
   const onDownload = () => {
-    download(JSON.stringify(items), "yourfile.json", "text/plain");
+    download(JSON.stringify(items), 'yourfile.json', 'text/plain');
   };
 
   return (
