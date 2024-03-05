@@ -1,7 +1,7 @@
-import React from "react";
-import { calculateTotalTimeSpent, calculateAverageTimeSpent } from "./utils";
-import { Item } from "./types";
-import { Discipline } from "./types/constants";
+import React from 'react';
+import { calculateTotalTimeSpent, calculateAverageTimeSpent } from './utils';
+import { Item } from './types';
+import { Discipline } from './types/constants';
 
 interface TrackerTableProps {
   items: Item[];
