@@ -2,6 +2,7 @@ import React from "react";
 import TrackerTable from "./TrackerTable";
 import { Item } from "./types";
 import UploadFile from "./UploadFile";
+import DownloadFile from "./DownloadFile";
 
 interface TrackerProps {
   items: Item[];
@@ -13,6 +14,7 @@ const Tracker = (props: TrackerProps) => {
     <div>
       <TrackerTable items={props.items} />
       <UploadFile setItems={props.setItems} />
+      <DownloadFile items={props.items} />
     </div>
   );
 };

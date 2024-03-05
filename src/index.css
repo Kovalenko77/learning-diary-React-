@@ -87,3 +87,7 @@ td {
 .tracker-table-foot {
   background-color: #d4dff9;
 }
+
+.download-button {
+  background-color: rgb(20, 130, 73);
+}
