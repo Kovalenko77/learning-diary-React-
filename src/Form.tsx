@@ -19,7 +19,7 @@ const Form = ({
   setTimeSpentIT,
 }: FormProps) => {
   return (
-    <form onSubmit={submit}>
+    <form className='form-time-to-learn' onSubmit={submit}>
       <div>
         <label>Date</label>
         <input

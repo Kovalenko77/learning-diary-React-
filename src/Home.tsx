@@ -21,7 +21,7 @@ const Home = ({
   setTimeSpentIT,
 }: HomeProps) => {
   return (
-    <div>
+    <main>
       <Form
         timeSpentEnglish={timeSpentEnglish}
         timeSpentIT={timeSpentIT}
@@ -31,7 +31,7 @@ const Home = ({
         setTimeSpentEnglish={setTimeSpentEnglish}
         submit={submit}
       />
-    </div>
+    </main>
   );
 };
 

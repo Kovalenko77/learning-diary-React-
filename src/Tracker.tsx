@@ -11,11 +11,11 @@ interface TrackerProps {
 
 const Tracker = (props: TrackerProps) => {
   return (
-    <div>
+    <main>
       <TrackerTable items={props.items} />
       <UploadFile setItems={props.setItems} />
       <DownloadFile items={props.items} />
-    </div>
+    </main>
   );
 };
 
