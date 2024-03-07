@@ -1,0 +1,27 @@
+.tracker-table {
+  border-collapse: collapse;
+  width: 50%;
+  margin: 20px;
+  td,
+  th {
+    border: 1px solid $primary;
+    padding: 8px;
+    text-align: center;
+    width: 450px;
+  }
+  &-foot {
+    background-color: $secondary;
+  }
+}
+
+.upload-file {
+  input {
+    background-color: $common;
+    margin: 5px 20px;
+  }
+}
+
+.download-button {
+  background-color: $primary-light;
+  margin: 10px 20px;
+}
