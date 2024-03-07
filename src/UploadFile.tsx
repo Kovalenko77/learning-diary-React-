@@ -30,8 +30,8 @@ const UploadFile = ({ setItems }: UploadFileProps) => {
   };
 
   return (
-    <div>
-      <input type="file" onChange={handleFileChange} />
+    <div className="upload-file">
+      <input className="upload-file-input" type="file" onChange={handleFileChange} />
     </div>
   );
 };
