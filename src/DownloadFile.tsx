@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@mui/material/Button';
 import { Item } from './types';
 
 interface DownloadFileProps {
@@ -19,10 +20,10 @@ const DownloadFile = ({ items }: DownloadFileProps) => {
   };
 
   return (
-    <div>
-      <button className="download-button" onClick={onDownload}>
+    <div className="download">
+      <Button className="download-button" variant="contained" color="success" size="small" onClick={onDownload}>
         Download
-      </button>
+      </Button>
     </div>
   );
 };

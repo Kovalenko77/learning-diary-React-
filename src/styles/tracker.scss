@@ -1,16 +1,7 @@
-.tracker-table {
-  border-collapse: collapse;
-  width: 50%;
-  margin: 20px;
-  td,
-  th {
-    border: 1px solid $primary;
-    padding: 8px;
-    text-align: center;
-    width: 450px;
-  }
-  &-foot {
-    background-color: $secondary;
+.tracker {
+  width: 1000px;
+  .table-footer {
+    border-top: 2px solid $primary;
   }
 }
 
@@ -21,7 +12,8 @@
   }
 }
 
-.download-button {
-  background-color: $primary-light;
-  margin: 10px 20px;
+.download {
+  .download-button {
+    margin: 20px;
+  }
 }

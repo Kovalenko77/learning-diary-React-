@@ -3,12 +3,12 @@ import Form from './Form';
 
 interface HomeProps {
   date: string;
-  timeSpentEnglish: number;
-  timeSpentIT: number;
+  timeSpentEnglish: string;
+  timeSpentIT: string;
   submit: (e: React.FormEvent<EventTarget>) => void;
   setDate: (value: string) => void;
-  setTimeSpentEnglish: (value: number) => void;
-  setTimeSpentIT: (value: number) => void;
+  setTimeSpentEnglish: (value: string) => void;
+  setTimeSpentIT: (value: string) => void;
 }
 
 const Home = ({

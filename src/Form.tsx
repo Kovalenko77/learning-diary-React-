@@ -1,12 +1,15 @@
 import React from 'react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
 interface FormProps {
   date: string;
-  timeSpentEnglish: number;
-  timeSpentIT: number;
+  timeSpentEnglish: string;
+  timeSpentIT: string;
   submit: (e: React.FormEvent<EventTarget>) => void;
   setDate: (value: string) => void;
-  setTimeSpentEnglish: (value: number) => void;
-  setTimeSpentIT: (value: number) => void;
+  setTimeSpentEnglish: (value: string) => void;
+  setTimeSpentIT: (value: string) => void;
 }
 
 const Form = ({
@@ -19,39 +22,41 @@ const Form = ({
   setTimeSpentIT,
 }: FormProps) => {
   return (
-    <form className='form-time-to-learn' onSubmit={submit}>
+    <form className="form-time-to-learn" onSubmit={submit}>
       <div>
-        <label>Date</label>
-        <input
-          type="data"
-          placeholder="01.01.2024"
-          value={date}
+        <TextField
+          label="Date"
+          id="outlined-size-small"
+          defaultValue={date}
+          size="small"
           onChange={(event) => setDate(event.target.value)}
-        ></input>
+        />
       </div>
       <div>
-        <label>Time to learn English</label>
-        <input
-          type="number"
-          placeholder="time in hours"
-          value={timeSpentEnglish}
-          onChange={(event) => setTimeSpentEnglish(event.target.valueAsNumber)}
-        ></input>
-        {/* <label>Comment</label>
-                <input type="text" placeholder="text some info "></input> */}
+        <TextField
+          label="Time to learn English"
+          id="outlined-size-small"
+          defaultValue={timeSpentEnglish}
+          size="small"
+          onChange={(event) => {
+            setTimeSpentEnglish(event.target.value);
+          }}
+        />
       </div>
       <div>
-        <label>Time to learn IT</label>
-        <input
-          type="number"
-          placeholder="time in hours"
-          value={timeSpentIT}
-          onChange={(event) => setTimeSpentIT(event.target.valueAsNumber)}
-        ></input>
-        {/* <label>Comment</label>
-                <input type="text" placeholder="text some info "></input> */}
+        <TextField
+          label="Time to learn IT"
+          id="outlined-size-small"
+          defaultValue={timeSpentIT}
+          size="small"
+          onChange={(event) => {
+            setTimeSpentIT(event.target.value);
+          }}
+        />
       </div>
-      <button>submit</button>
+      <Button variant="contained" disableElevation type="submit">
+        Submit
+      </Button>
     </form>
   );
 };
