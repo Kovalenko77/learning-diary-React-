@@ -6,7 +6,7 @@ import { Item } from './types';
 
 interface TrackerProps {
   items: Item[];
-  setItems: (value: string) => void;
+  setItems: (items:Item[]) => void;
 }
 
 const Tracker = (props: TrackerProps) => {

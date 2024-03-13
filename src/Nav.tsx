@@ -11,6 +11,9 @@ const Nav = () => {
         <li>
           <Link to="/tracker">Tracker</Link>
         </li>
+        <li>
+          <Link to="/comments">Comments</Link>
+        </li>
       </ul>
     </nav>
   );
