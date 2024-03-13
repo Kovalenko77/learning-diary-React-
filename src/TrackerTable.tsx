@@ -1,4 +1,12 @@
 import React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import TableFooter from '@mui/material/TableFooter';
 import { calculateTotalTimeSpent, calculateAverageTimeSpent } from './utils';
 import { Item } from './types';
 import { Discipline } from './types/constants';
@@ -10,43 +18,45 @@ interface TrackerTableProps {
 const TrackerTable = ({ items }: TrackerTableProps) => {
   let tableRowDataArr = items.map(function (item) {
     return (
-      <tr key={item.id}>
-        <td>{item.date}</td>
-        <td>{item.data.english.timeSpent}</td>
-        <td>{item.data.IT.timeSpent}</td>
-      </tr>
+      <TableRow key={item.id}>
+        <TableCell>{item.date}</TableCell>
+        <TableCell>{item.data.english.timeSpent}</TableCell>
+        <TableCell>{item.data.IT.timeSpent}</TableCell>
+      </TableRow>
     );
   });
   const summaryRow = (
-    <tr>
-      <th>Sum</th>
-      <td>{calculateTotalTimeSpent(items, Discipline.english)}</td>
-      <td>{calculateTotalTimeSpent(items, Discipline.IT)}</td>
-    </tr>
+    <TableRow>
+      <TableCell>Sum</TableCell>
+      <TableCell>{calculateTotalTimeSpent(items, Discipline.english)}</TableCell>
+      <TableCell>{calculateTotalTimeSpent(items, Discipline.IT)}</TableCell>
+    </TableRow>
   );
   const averageRow = (
-    <tr>
-      <th>Average</th>
-      <td>{calculateAverageTimeSpent(items, Discipline.english)}</td>
-      <td>{calculateAverageTimeSpent(items, Discipline.IT)}</td>
-    </tr>
+    <TableRow>
+      <TableCell>Average</TableCell>
+      <TableCell>{calculateAverageTimeSpent(items, Discipline.english)}</TableCell>
+      <TableCell>{calculateAverageTimeSpent(items, Discipline.IT)}</TableCell>
+    </TableRow>
   );
   return (
     <div className="tracker">
-      <table className="tracker-table">
-        <thead className="tracker-table-head">
-          <tr>
-            <th>Date</th>
-            <th>TimeSpentEnglish</th>
-            <th>TimeSpentIT</th>
-          </tr>
-        </thead>
-        <tbody className="tracker-table-body">{tableRowDataArr}</tbody>
-        <tfoot className="tracker-table-foot">
-          {summaryRow}
-          {averageRow}
-        </tfoot>
-      </table>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Date</TableCell>
+              <TableCell>TimeSpentEnglish</TableCell>
+              <TableCell>TimeSpentIT</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>{tableRowDataArr}</TableBody>
+          <TableFooter className="table-footer">
+            {summaryRow}
+            {averageRow}
+          </TableFooter>
+        </Table>
+      </TableContainer>
     </div>
   );
 };

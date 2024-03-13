@@ -1,5 +1,5 @@
-import { Item } from "./types";
-import { Discipline } from "./types/constants";
+import { Item } from './types';
+import { Discipline } from './types/constants';
 
 export function getCurrentDateFormatted() {
   const todayDate = new Date();
@@ -7,18 +7,15 @@ export function getCurrentDateFormatted() {
   const month = todayDate.getMonth() + 1;
   const year = todayDate.getFullYear();
 
-  const formatedDay = day < 10 ? "0" + day : day.toString();
-  const formatedMonth = month < 10 ? "0" + month : month.toString();
+  const formatedDay = day < 10 ? '0' + day : day.toString();
+  const formatedMonth = month < 10 ? '0' + month : month.toString();
 
-  var formattedDate = formatedDay + "." + formatedMonth + "." + year;
+  var formattedDate = formatedDay + '.' + formatedMonth + '.' + year;
 
   return formattedDate;
 }
 
-export function calculateTotalTimeSpent(
-  dataArray: Item[],
-  discipline: Discipline,
-) {
+export function calculateTotalTimeSpent(dataArray: Item[], discipline: Discipline) {
   // Используем метод reduce для свертки массива и вычисления суммы
   return dataArray.reduce((total, currentItem) => {
     // Если у текущего элемента есть свойство 'data' и 'english' внутри него
@@ -30,18 +27,11 @@ export function calculateTotalTimeSpent(
   }, 0);
 }
 
-export function calculateAverageTimeSpent(
-  dataArray: Item[],
-  discipline: Discipline,
-) {
-  const timeSpentValues = dataArray.map(
-    (item) => item.data[discipline].timeSpent,
-  );
+export function calculateAverageTimeSpent(dataArray: Item[], discipline: Discipline) {
+  const timeSpentValues = dataArray.map((item) => item.data[discipline].timeSpent);
   let averageTimeSpent = 0;
   if (timeSpentValues.length > 0) {
-    averageTimeSpent =
-      timeSpentValues.reduce((sum, value) => sum + value, 0) /
-      timeSpentValues.length;
+    averageTimeSpent = timeSpentValues.reduce((sum, value) => sum + value, 0) / timeSpentValues.length;
   }
   return averageTimeSpent;
 }

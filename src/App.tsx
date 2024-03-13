@@ -6,8 +6,8 @@ import Tracker from './Tracker';
 import { getCurrentDateFormatted } from './utils';
 
 const DEFAULT_DATE_VALUE = getCurrentDateFormatted();
-const DEFAULT_TIME_SPENT_ENGLISH_VALUE = 1;
-const DEFAULT_TIME_SPENT_IT_VALUE = 2;
+const DEFAULT_TIME_SPENT_ENGLISH_VALUE = '1';
+const DEFAULT_TIME_SPENT_IT_VALUE = '2';
 
 function App() {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('items') || '[]') || []);
@@ -21,12 +21,12 @@ function App() {
 
   const addItem = ({
     date,
-    timeSpentIT,
     timeSpentEnglish,
+    timeSpentIT,
   }: {
     date: string;
-    timeSpentIT: number;
-    timeSpentEnglish: number;
+    timeSpentEnglish: string;
+    timeSpentIT: string;
   }) => {
     const id = items.length;
     const myNewItem = {
@@ -34,10 +34,10 @@ function App() {
       date: date,
       data: {
         english: {
-          timeSpent: timeSpentEnglish,
+          timeSpent: Number(timeSpentEnglish),
         },
         IT: {
-          timeSpent: timeSpentIT,
+          timeSpent: Number(timeSpentIT),
         },
       },
     };
@@ -47,9 +47,8 @@ function App() {
 
   const submit = (event: React.FormEvent<EventTarget>) => {
     event.preventDefault();
-    addItem({ date, timeSpentIT, timeSpentEnglish });
+    addItem({ date, timeSpentEnglish, timeSpentIT });
   };
-
   return (
     <BrowserRouter>
       <Routes>

@@ -1,8 +1,8 @@
 import React from 'react';
 import TrackerTable from './TrackerTable';
-import { Item } from './types';
 import UploadFile from './UploadFile';
 import DownloadFile from './DownloadFile';
+import { Item } from './types';
 
 interface TrackerProps {
   items: Item[];
