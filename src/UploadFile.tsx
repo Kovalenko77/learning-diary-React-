@@ -1,7 +1,8 @@
 import React, { ChangeEvent } from 'react';
+import { Item } from './types';
 
 interface UploadFileProps {
-  setItems: (value: string) => void;
+  setItems: (items: Item[]) => void;
 }
 
 const UploadFile = ({ setItems }: UploadFileProps) => {
