@@ -1,5 +1,6 @@
-import React, { ChangeEvent } from 'react';
-import { Item } from './types';
+import React from 'react';
+import type { ChangeEvent } from 'react';
+import type { Item } from './types';
 
 interface UploadFileProps {
   setItems: (items: Item[]) => void;

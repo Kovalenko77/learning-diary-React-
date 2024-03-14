@@ -2,7 +2,7 @@ import React from 'react';
 import TrackerTable from './TrackerTable';
 import UploadFile from './UploadFile';
 import DownloadFile from './DownloadFile';
-import { Item } from './types';
+import type { Item } from './types';
 
 interface TrackerProps {
   items: Item[];

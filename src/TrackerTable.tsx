@@ -8,8 +8,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TableFooter from '@mui/material/TableFooter';
 import { calculateTotalTimeSpent, calculateAverageTimeSpent } from './utils';
-import { Item } from './types';
 import { Discipline } from './types/constants';
+import type { Item } from './types';
 
 interface TrackerTableProps {
   items: Item[];

@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import { Item } from './types';
+import type { Item } from './types';
 
 interface DownloadFileProps {
   items: Item[];

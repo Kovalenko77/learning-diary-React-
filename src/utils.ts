@@ -1,5 +1,5 @@
-import { Item } from './types';
 import { Discipline } from './types/constants';
+import type { Item } from './types';
 
 export function getCurrentDateFormatted() {
   const todayDate = new Date();
