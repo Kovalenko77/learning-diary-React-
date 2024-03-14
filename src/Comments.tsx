@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Card from './Card';
+import Grid from '@mui/material/Grid';
+import CardComment from './CardComment';
 
 interface Comment {
   Title: string;
@@ -23,14 +24,13 @@ const Comments = () => {
   }, []);
 
   return (
-    <div className="comments">
-      <h1>Data from Google Sheets</h1>
-      <div className="cards-container">
-        {comments.map((item, index) => (
-          <Card key={index} title={item.Title} content={item.Content} />
-        ))}
-      </div>
-    </div>
+    <Grid className="card-wrapper" container spacing={2}>
+      {comments.map((item, index) => (
+        <Grid item xs={12} sm={6} md={3} key={comments.indexOf(item)}>
+          <CardComment key={index} title={item.Title} content={item.Content} />
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 

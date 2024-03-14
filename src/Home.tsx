@@ -21,17 +21,15 @@ const Home = ({
   setTimeSpentIT,
 }: HomeProps) => {
   return (
-    <main>
-      <Form
-        timeSpentEnglish={timeSpentEnglish}
-        timeSpentIT={timeSpentIT}
-        date={date}
-        setDate={setDate}
-        setTimeSpentIT={setTimeSpentIT}
-        setTimeSpentEnglish={setTimeSpentEnglish}
-        submit={submit}
-      />
-    </main>
+    <Form
+      timeSpentEnglish={timeSpentEnglish}
+      timeSpentIT={timeSpentIT}
+      date={date}
+      setDate={setDate}
+      setTimeSpentIT={setTimeSpentIT}
+      setTimeSpentEnglish={setTimeSpentEnglish}
+      submit={submit}
+    />
   );
 };
 
