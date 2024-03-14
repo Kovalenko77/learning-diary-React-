@@ -9,7 +9,9 @@ const Layout = () => {
     <div className="layout">
       <Header />
       <Nav />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
