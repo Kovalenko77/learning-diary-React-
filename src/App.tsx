@@ -5,7 +5,7 @@ import Layout from './Layout';
 import Home from './Home';
 import Tracker from './Tracker';
 import Comments from './Comments';
-import { Item } from './types';
+import type { Item } from './types';
 
 const DEFAULT_DATE_VALUE = getCurrentDateFormatted();
 const DEFAULT_TIME_SPENT_ENGLISH_VALUE = '1';
