@@ -28,14 +28,18 @@ const TrackerTable = ({ items }: TrackerTableProps) => {
   const summaryRow = (
     <TableRow>
       <TableCell>Sum</TableCell>
-      <TableCell>{calculateTotalTimeSpent(items, Discipline.english)}</TableCell>
+      <TableCell>
+        {calculateTotalTimeSpent(items, Discipline.english)}
+      </TableCell>
       <TableCell>{calculateTotalTimeSpent(items, Discipline.IT)}</TableCell>
     </TableRow>
   );
   const averageRow = (
     <TableRow>
       <TableCell>Average</TableCell>
-      <TableCell>{calculateAverageTimeSpent(items, Discipline.english)}</TableCell>
+      <TableCell>
+        {calculateAverageTimeSpent(items, Discipline.english)}
+      </TableCell>
       <TableCell>{calculateAverageTimeSpent(items, Discipline.IT)}</TableCell>
     </TableRow>
   );

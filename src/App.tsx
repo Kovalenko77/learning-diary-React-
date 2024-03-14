@@ -12,9 +12,13 @@ const DEFAULT_TIME_SPENT_ENGLISH_VALUE = '1';
 const DEFAULT_TIME_SPENT_IT_VALUE = '2';
 
 function App() {
-  const [items, setItems] = useState<Item[]>(JSON.parse(localStorage.getItem('items') || '[]') || []);
+  const [items, setItems] = useState<Item[]>(
+    JSON.parse(localStorage.getItem('items') || '[]') || []
+  );
   const [date, setDate] = useState(DEFAULT_DATE_VALUE);
-  const [timeSpentEnglish, setTimeSpentEnglish] = useState(DEFAULT_TIME_SPENT_ENGLISH_VALUE);
+  const [timeSpentEnglish, setTimeSpentEnglish] = useState(
+    DEFAULT_TIME_SPENT_ENGLISH_VALUE
+  );
   const [timeSpentIT, setTimeSpentIT] = useState(DEFAULT_TIME_SPENT_IT_VALUE);
 
   useEffect(() => {
@@ -69,7 +73,10 @@ function App() {
               />
             }
           ></Route>
-          <Route path="tracker" element={<Tracker items={items} setItems={setItems} />}></Route>
+          <Route
+            path="tracker"
+            element={<Tracker items={items} setItems={setItems} />}
+          ></Route>
           <Route path="comments" element={<Comments />}></Route>
         </Route>
       </Routes>

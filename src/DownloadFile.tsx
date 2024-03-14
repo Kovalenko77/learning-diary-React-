@@ -21,7 +21,13 @@ const DownloadFile = ({ items }: DownloadFileProps) => {
 
   return (
     <div className="download">
-      <Button className="download-button" variant="contained" color="success" size="small" onClick={onDownload}>
+      <Button
+        className="download-button"
+        variant="contained"
+        color="success"
+        size="small"
+        onClick={onDownload}
+      >
         Download
       </Button>
     </div>
