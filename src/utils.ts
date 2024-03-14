@@ -15,7 +15,10 @@ export function getCurrentDateFormatted() {
   return formattedDate;
 }
 
-export function calculateTotalTimeSpent(dataArray: Item[], discipline: Discipline) {
+export function calculateTotalTimeSpent(
+  dataArray: Item[],
+  discipline: Discipline
+) {
   // Используем метод reduce для свертки массива и вычисления суммы
   return dataArray.reduce((total, currentItem) => {
     // Если у текущего элемента есть свойство 'data' и 'english' внутри него
@@ -27,11 +30,18 @@ export function calculateTotalTimeSpent(dataArray: Item[], discipline: Disciplin
   }, 0);
 }
 
-export function calculateAverageTimeSpent(dataArray: Item[], discipline: Discipline) {
-  const timeSpentValues = dataArray.map((item) => item.data[discipline].timeSpent);
+export function calculateAverageTimeSpent(
+  dataArray: Item[],
+  discipline: Discipline
+) {
+  const timeSpentValues = dataArray.map(
+    (item) => item.data[discipline].timeSpent
+  );
   let averageTimeSpent = 0;
   if (timeSpentValues.length > 0) {
-    averageTimeSpent = timeSpentValues.reduce((sum, value) => sum + value, 0) / timeSpentValues.length;
+    averageTimeSpent =
+      timeSpentValues.reduce((sum, value) => sum + value, 0) /
+      timeSpentValues.length;
   }
   return averageTimeSpent;
 }

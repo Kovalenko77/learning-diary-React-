@@ -25,7 +25,10 @@ const UploadFile = ({ setItems }: UploadFileProps) => {
     };
 
     fileReader.onerror = (event) => {
-      console.error('Ошибка при чтении файла:', (event.target as FileReader).error);
+      console.error(
+        'Ошибка при чтении файла:',
+        (event.target as FileReader).error
+      );
     };
 
     fileReader.readAsText(file);
@@ -33,7 +36,11 @@ const UploadFile = ({ setItems }: UploadFileProps) => {
 
   return (
     <div className="upload-file">
-      <input className="upload-file-input" type="file" onChange={handleFileChange} />
+      <input
+        className="upload-file-input"
+        type="file"
+        onChange={handleFileChange}
+      />
     </div>
   );
 };
