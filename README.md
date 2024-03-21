@@ -1,3 +1,7 @@
+# Getting Started learning-diary-react with Google Sheets
+
+https://docs.google.com/spreadsheets/d/1S9wDwRAs-ZStEjoMGcH9QnFawZmhruJehypC1cdet_U/edit#gid=0
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

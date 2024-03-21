@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Grid from '@mui/material/Grid';
 import CardComment from './CardComment';
 import Loader from './Loader';
@@ -15,36 +15,59 @@ interface CommentsResponse {
 
 const Comments = () => {
   const [comments, setComments] = useState<Comment[]>([]);
-  const [isDataLoading, setIsDataLoading] = useState(true);
+  const [isDataLoading, setIsDataLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
-  useEffect(() => {
+  const refresh = useCallback(() => {
     setIsDataLoading(true);
+    setHasError(false);
     fetch(
       'https://script.google.com/macros/s/AKfycbwDUdbK7tfJSy_UIOGBWpFPuDZ0qy8BBNZU3vP-SkXytRMvN0b0MUp8yf2MIADf_u5Rtg/exec'
     )
-      .then((response) => response.json())
+      .then((response) => {
+        return response.json();
+      })
       .then((data: CommentsResponse) => {
         setComments(data.data);
-        setIsDataLoading(false);
       })
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+      .catch((error) => {
+        setHasError(true);
+      })
+      .finally(() => {
+        setIsDataLoading(false);
+      });
+  }, [])
+
+  useEffect(refresh, []);
 
   return (
     <>
-      {isDataLoading && <Loader />}
-      {<Grid className="card-wrapper" container spacing={2}>
-          {comments.map((item, index) => (
-            <Grid item xs={12} sm={6} md={3} key={comments.indexOf(item)}>
-              <CardComment
-                key={index}
-                title={item.Title}
-                content={item.Content}
-              />
+      {isDataLoading ? <Loader /> : null}
+      {hasError ? (
+        <p>Data loading error. Check your internet connection.</p>
+      ) : null}
+      {hasError === false && isDataLoading === false && (
+        <>
+          {comments.length === 0 ? (
+            <p>You have no comments</p>
+          ) : (
+            <Grid className="card-wrapper" container spacing={2}>
+              {comments.map((item, index) => (
+                <Grid item xs={12} sm={6} md={3} key={comments.indexOf(item)}>
+                  <CardComment
+                    key={index}
+                    title={item.Title}
+                    content={item.Content}
+                  />
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      }
+          )}
+        </>
+      )}
+      <button className="refresh" onClick={refresh}>
+        Refresh
+      </button>
     </>
   );
 };
