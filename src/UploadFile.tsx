@@ -25,10 +25,7 @@ const UploadFile = ({ setItems }: UploadFileProps) => {
     };
 
     fileReader.onerror = (event) => {
-      console.error(
-        'Ошибка при чтении файла:',
-        (event.target as FileReader).error
-      );
+      console.error('Read file error:', (event.target as FileReader).error);
     };
 
     fileReader.readAsText(file);

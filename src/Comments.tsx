@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Grid from '@mui/material/Grid';
 import CardComment from './CardComment';
 import Loader from './Loader';
+import { useTranslation } from 'react-i18next';
 
 interface Comment {
   Title: string;
@@ -14,6 +15,8 @@ interface CommentsResponse {
 }
 
 const Comments = () => {
+  const { t } = useTranslation();
+
   const [comments, setComments] = useState<Comment[]>([]);
   const [isDataLoading, setIsDataLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -36,20 +39,18 @@ const Comments = () => {
       .finally(() => {
         setIsDataLoading(false);
       });
-  }, [])
+  }, []);
 
   useEffect(refresh, []);
 
   return (
     <>
       {isDataLoading ? <Loader /> : null}
-      {hasError ? (
-        <p>Data loading error. Check your internet connection.</p>
-      ) : null}
+      {hasError ? <p>{t('data_loading_error')}</p> : null}
       {hasError === false && isDataLoading === false && (
         <>
           {comments.length === 0 ? (
-            <p>You have no comments</p>
+            <p>{t('no_comments')}</p>
           ) : (
             <Grid className="card-wrapper" container spacing={2}>
               {comments.map((item, index) => (
@@ -66,7 +67,7 @@ const Comments = () => {
         </>
       )}
       <button className="refresh" onClick={refresh}>
-        Refresh
+        {t('refresh')}
       </button>
     </>
   );

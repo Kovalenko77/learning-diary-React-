@@ -10,12 +10,13 @@ import TableFooter from '@mui/material/TableFooter';
 import { calculateTotalTimeSpent, calculateAverageTimeSpent } from './utils';
 import { Discipline } from './types/constants';
 import type { Item } from './types';
-
+import { useTranslation } from 'react-i18next';
 interface TrackerTableProps {
   items: Item[];
 }
 
 const TrackerTable = ({ items }: TrackerTableProps) => {
+  const { t } = useTranslation();
   let tableRowDataArr = items.map(function (item) {
     return (
       <TableRow key={item.id}>
@@ -27,7 +28,7 @@ const TrackerTable = ({ items }: TrackerTableProps) => {
   });
   const summaryRow = (
     <TableRow>
-      <TableCell>Sum</TableCell>
+      <TableCell>{t('sum')}</TableCell>
       <TableCell>
         {calculateTotalTimeSpent(items, Discipline.english)}
       </TableCell>
@@ -36,7 +37,7 @@ const TrackerTable = ({ items }: TrackerTableProps) => {
   );
   const averageRow = (
     <TableRow>
-      <TableCell>Average</TableCell>
+      <TableCell>{t('average')}</TableCell>
       <TableCell>
         {calculateAverageTimeSpent(items, Discipline.english)}
       </TableCell>
@@ -49,9 +50,9 @@ const TrackerTable = ({ items }: TrackerTableProps) => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Date</TableCell>
-              <TableCell>TimeSpentEnglish</TableCell>
-              <TableCell>TimeSpentIT</TableCell>
+              <TableCell>{t('date')}</TableCell>
+              <TableCell>{t('time_spent_english')}</TableCell>
+              <TableCell>{t('time_spent_it')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>{tableRowDataArr}</TableBody>
