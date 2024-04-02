@@ -1,0 +1,18 @@
+{
+  "learning_diary": "Learning Diary",
+  "home": "Home",
+  "tracker": "Tracker",
+  "comments": "Comments",
+  "date": "Date",
+  "time_to_learn_english": "Time to learn English",
+  "time_to_learn_it": "Time to learn IT",
+  "submit": "SUBMIT",
+  "time_spent_english": "TimeSpentEnglish",
+  "time_spent_it": "TimeSpentIT",
+  "sum": "Sum",
+  "average": "Average",
+  "download": "Download",
+  "data_loading_error": "Data loading error. Check your internet connection",
+  "no_comments": "You have no comments",
+  "refresh": "Refresh"
+}

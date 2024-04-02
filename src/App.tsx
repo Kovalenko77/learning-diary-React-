@@ -55,6 +55,7 @@ function App() {
     event.preventDefault();
     addItem({ date, timeSpentEnglish, timeSpentIT });
   };
+
   return (
     <BrowserRouter>
       <Routes>
